@@ -1,0 +1,28 @@
+{
+	"name": "ecdh-demo",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "node scripts/bundle-client.mjs && vite build",
+		"preview": "pnpm run build && wrangler dev",
+		"deploy": "pnpm run build && wrangler deploy",
+		"genkey": "node scripts/gen-server-key.mjs",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"dependencies": {
+		"@noble/curves": "^2.0.1",
+		"@noble/hashes": "^2.0.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"devDependencies": {
+		"@cloudflare/vite-plugin": "^1.40.0",
+		"@vitejs/plugin-react": "^6.0.2",
+		"prettier": "3.9.4",
+		"vite": "^8.0.16",
+		"wrangler": "^4.98.0"
+	}
+}

@@ -1,0 +1,105 @@
+:root {
+	color-scheme: light dark;
+	--line: #ccc;
+	--muted: #666;
+	--error: #b00020;
+	--link: #0645ad;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--line: #444;
+		--muted: #999;
+		--error: #ff8a80;
+		--link: #8ab4f8;
+	}
+}
+
+a {
+	color: var(--link);
+}
+
+body {
+	max-width: 44rem;
+	margin: 0 auto;
+	padding: 2rem 1rem 4rem;
+	font-family: system-ui, sans-serif;
+	line-height: 1.6;
+}
+
+h1 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+h2 {
+	font-size: 1.05rem;
+	margin: 2.5rem 0 0.5rem;
+}
+
+p {
+	margin: 0.5rem 0;
+}
+
+code,
+pre,
+textarea,
+button {
+	font-family: ui-monospace, monospace;
+	font-size: 0.85rem;
+}
+
+pre,
+textarea {
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0.5rem 0;
+	padding: 0.6rem;
+	border: 1px solid var(--line);
+	background: none;
+	color: inherit;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+textarea {
+	resize: vertical;
+}
+
+button {
+	padding: 0.35rem 0.7rem;
+	border: 1px solid var(--line);
+	background: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+button:disabled {
+	color: var(--muted);
+	cursor: not-allowed;
+}
+
+hr {
+	margin: 3rem 0 1.5rem;
+	border: none;
+	border-top: 1px solid var(--line);
+}
+
+.muted {
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.error {
+	color: var(--error);
+}
+
+.count {
+	font-family: ui-monospace, monospace;
+	font-size: 0.85rem;
+}
+
+.fingerprint {
+	font-size: 1.2rem;
+	letter-spacing: 0.05em;
+}
