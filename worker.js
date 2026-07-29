@@ -29,12 +29,24 @@ function fingerprint(xHex, yHex) {
 	return short.slice(0, 4) + " " + short.slice(4, 8);
 }
 
+function describeKey(hex) {
+	if (hex.length === 0) {
+		return "got an empty or unset value";
+	}
+
+	const nonHex = /^[0-9a-f]+$/.test(hex) ? "" : ", including non-hex characters";
+
+	return "got " + hex.length + nonHex;
+}
+
 function loadServerKeys(env) {
 	const privateKey = normalizeHex(env.PRIVATE_KEY || "");
 	const publicKey = normalizeHex(env.PUBLIC_KEY || "");
 
 	if (privateKey.length !== PRIVATE_KEY_HEX_LENGTH || !/^[0-9a-f]+$/.test(privateKey)) {
-		throw new Error("PRIVATE_KEY must be 32 bytes of hex (64 characters).");
+		throw new Error(
+			"PRIVATE_KEY must be 32 bytes of hex (64 characters); " + describeKey(privateKey) + ".",
+		);
 	}
 
 	if (!p256.utils.isValidSecretKey(hexToBytes(privateKey))) {
@@ -42,7 +54,11 @@ function loadServerKeys(env) {
 	}
 
 	if (publicKey.length !== PUBLIC_KEY_HEX_LENGTH) {
-		throw new Error("PUBLIC_KEY must be an uncompressed P-256 point (130 hex characters).");
+		throw new Error(
+			"PUBLIC_KEY must be an uncompressed P-256 point (130 hex characters); " +
+				describeKey(publicKey) +
+				".",
+		);
 	}
 
 	try {
